@@ -3,6 +3,8 @@ import express from "express";
 
 const app = express();
 
+app.use(express.json()); // to parse body in requests
+
 const propertiesList = [
   {
     id: 1,
@@ -62,7 +64,6 @@ app.get("/properties", (req, res) => {
 
 app.get("/properties/:id", (req, res) => {
   const id = Number(req.params.id);
-
   const property = propertiesList.find((p) => p.id === id);
 
   if (!property) {
@@ -72,7 +73,24 @@ app.get("/properties/:id", (req, res) => {
   res.send(JSON.stringify(property));
 });
 
+app.post("/properties", (req, res) => {
+  const _property = req.body;
+  propertiesList.push(_property);
+
+  res.send(JSON.stringify({ message: "Data Saved" }));
+});
+
+app.delete("/properties/:id", (req, res) => {
+  const id = Number(req.params.id);
+  const _property = propertiesList.find((p) => p.id === id);
+
+  const index = propertiesList.indexOf(_property);
+
+  propertiesList.splice(index, 1);
+
+  res.send(JSON.stringify({ message: "Property removed" }));
+});
+
 app.listen(4000);
 
 console.log("Server listening on port: 4000");
-
