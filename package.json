@@ -17,5 +17,8 @@
     "url": "https://github.com/arslanshahab/graana-api/issues"
   },
   "homepage": "https://github.com/arslanshahab/graana-api#readme",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
