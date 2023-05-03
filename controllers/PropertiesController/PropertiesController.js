@@ -1,9 +1,13 @@
 import { propertiesList } from "../../mock/data.js";
+import { ProductModel } from "../../models/ProductModel.js";
 
 const _propertiesList = [...propertiesList];
 
-export const getAllProperties = (req, res) => {
-  res.send(JSON.stringify(_propertiesList));
+export const getAllProperties = async (req, res) => {
+
+  const properties = await ProductModel.find({})
+
+  res.send(JSON.stringify(properties));
 };
 
 export const getSingleProperty = (req, res) => {
@@ -18,8 +22,8 @@ export const getSingleProperty = (req, res) => {
 };
 
 export const saveProperty = (req, res) => {
-  const _property = req.body;
-  _propertiesList.push(_property);
+
+  ProductModel.create(_property)
 
   res.send(JSON.stringify({ message: "Data Saved" }));
 };
