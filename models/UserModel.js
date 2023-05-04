@@ -8,3 +8,7 @@ const UserSchema = new Schema({
 });
 
 export const UserModel = mongoose.model("Users", UserSchema);
+
+
+// hook PRE SAVE
+// MODEL -> METHODS 
