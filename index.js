@@ -1,8 +1,10 @@
 import express from "express";
-import { propertiesRoutes, userRoutes } from "./routes/index.js";
 import mongoose from "mongoose";
+import * as dotenv from "dotenv";
+import { authRoutes, propertiesRoutes, userRoutes } from "./routes/index.js";
 
 const app = express();
+dotenv.config();
 app.use(express.json()); // to parse body in requests
 
 mongoose.connect("mongodb://localhost:27017/graana-db");
@@ -17,6 +19,7 @@ mongoose.connection.on("error", () => {
 
 app.use("/", propertiesRoutes);
 app.use("/", userRoutes);
+app.use("/", authRoutes);
 
 app.listen(4000);
 

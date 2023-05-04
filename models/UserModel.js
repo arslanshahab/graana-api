@@ -4,7 +4,7 @@ const UserSchema = new Schema({
   id: Schema.Types.ObjectId,
   email: String,
   password: String,
-  token: String
+  token: String,
 });
 
 export const UserModel = mongoose.model("Users", UserSchema);
