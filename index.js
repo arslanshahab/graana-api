@@ -1,11 +1,13 @@
 import express from "express";
 import mongoose from "mongoose";
 import * as dotenv from "dotenv";
+import cors from "cors";
 import { authRoutes, propertiesRoutes, userRoutes } from "./routes/index.js";
 
 const app = express();
 dotenv.config();
 app.use(express.json()); // to parse body in requests
+app.use(cors());
 
 mongoose.connect("mongodb://localhost:27017/graana-db");
 

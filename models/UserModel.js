@@ -10,5 +10,13 @@ const UserSchema = new Schema({
 export const UserModel = mongoose.model("Users", UserSchema);
 
 
+
+// UserSchema.pre('save', ()=> {
+
+// })
+
+// UserSchema.methods.generateToken = () => {
+  
+// }
 // hook PRE SAVE
 // MODEL -> METHODS 
